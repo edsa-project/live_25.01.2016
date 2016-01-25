@@ -1,0 +1,95 @@
+Country,ISO2,Type,Rank_Scaled,Machine_learning,Domain_expertise,Data_skills,Advanced_computing,Visualisation,Scientific_method,Open_culture,Math_and_statistics
+United Kingdom,GB,Capability,100,3,3,3,3,2,4,1,3
+United Kingdom,GB,Capacity,100,2,3,3,2,2,2,1,3
+Ukraine,UA,Capability,0,0,0,0,0,0,0,0,0
+Ukraine,UA,Capacity,0,0,0,0,0,0,0,0,0
+France,FR,Capability,0,0,0,0,0,0,0,0,0
+France,FR,Capacity,0,0,0,0,0,0,0,0,0
+Spain,ES,Capability,0,0,0,0,0,0,0,0,0
+Spain,ES,Capacity,0,0,0,0,0,0,0,0,0
+Sweden,SE,Capability,0,0,0,0,0,0,0,0,0
+Sweden,SE,Capacity,0,0,0,0,0,0,0,0,0
+Germany,DE,Capability,0,0,0,0,0,0,0,0,0
+Germany,DE,Capacity,0,0,0,0,0,0,0,0,0
+Finland,FI,Capability,0,0,0,0,0,0,0,0,0
+Finland,FI,Capacity,0,0,0,0,0,0,0,0,0
+Norway,NO,Capability,0,0,0,0,0,0,0,0,0
+Norway,NO,Capacity,0,0,0,0,0,0,0,0,0
+Poland,PL,Capability,0,0,0,0,0,0,0,0,0
+Poland,PL,Capacity,0,0,0,0,0,0,0,0,0
+Italy,IT,Capability,0,0,0,0,0,0,0,0,0
+Italy,IT,Capacity,0,0,0,0,0,0,0,0,0
+Romania,RO,Capability,0,0,0,0,0,0,0,0,0
+Romania,RO,Capacity,0,0,0,0,0,0,0,0,0
+Belarus,BY,Capability,0,0,0,0,0,0,0,0,0
+Belarus,BY,Capacity,0,0,0,0,0,0,0,0,0
+Greece,GR,Capability,0,0,0,0,0,0,0,0,0
+Greece,GR,Capacity,0,0,0,0,0,0,0,0,0
+Bulgaria,BG,Capability,0,0,0,0,0,0,0,0,0
+Bulgaria,BG,Capacity,0,0,0,0,0,0,0,0,0
+Iceland,IS,Capability,0,0,0,0,0,0,0,0,0
+Iceland,IS,Capacity,0,0,0,0,0,0,0,0,0
+Portugal,PT,Capability,0,0,0,0,0,0,0,0,0
+Portugal,PT,Capacity,0,0,0,0,0,0,0,0,0
+Czech Republic,CZ,Capability,0,0,0,0,0,0,0,0,0
+Czech Republic,CZ,Capacity,0,0,0,0,0,0,0,0,0
+Denmark,DK,Capability,0,0,0,0,0,0,0,0,0
+Denmark,DK,Capacity,0,0,0,0,0,0,0,0,0
+Hungary,HU,Capability,0,0,0,0,0,0,0,0,0
+Hungary,HU,Capacity,0,0,0,0,0,0,0,0,0
+Serbia,RS,Capability,0,0,0,0,0,0,0,0,0
+Serbia,RS,Capacity,0,0,0,0,0,0,0,0,0
+Austria,AT,Capability,0,0,0,0,0,0,0,0,0
+Austria,AT,Capacity,0,0,0,0,0,0,0,0,0
+Ireland,IE,Capability,0,0,0,0,0,0,0,0,0
+Ireland,IE,Capacity,0,0,0,0,0,0,0,0,0
+Lithuania,LT,Capability,0,0,0,0,0,0,0,0,0
+Lithuania,LT,Capacity,0,0,0,0,0,0,0,0,0
+Latvia,LV,Capability,0,0,0,0,0,0,0,0,0
+Latvia,LV,Capacity,0,0,0,0,0,0,0,0,0
+Croatia,HR,Capability,0,0,0,0,0,0,0,0,0
+Croatia,HR,Capacity,0,0,0,0,0,0,0,0,0
+Bosnia and Herzegovina,BA,Capability,0,0,0,0,0,0,0,0,0
+Bosnia and Herzegovina,BA,Capacity,0,0,0,0,0,0,0,0,0
+Slovakia,SK,Capability,0,0,0,0,0,0,0,0,0
+Slovakia,SK,Capacity,0,0,0,0,0,0,0,0,0
+Estonia,EE,Capability,0,0,0,0,0,0,0,0,0
+Estonia,EE,Capacity,0,0,0,0,0,0,0,0,0
+Netherlands,NL,Capability,0,0,0,0,0,0,0,0,0
+Netherlands,NL,Capacity,0,0,0,0,0,0,0,0,0
+Switzerland,CH,Capability,0,0,0,0,0,0,0,0,0
+Switzerland,CH,Capacity,0,0,0,0,0,0,0,0,0
+Moldova,MD,Capability,0,0,0,0,0,0,0,0,0
+Moldova,MD,Capacity,0,0,0,0,0,0,0,0,0
+Belgium,BE,Capability,0,0,0,0,0,0,0,0,0
+Belgium,BE,Capacity,0,0,0,0,0,0,0,0,0
+Albania,AL,Capability,0,0,0,0,0,0,0,0,0
+Albania,AL,Capacity,0,0,0,0,0,0,0,0,0
+Macedonia,MK,Capability,0,0,0,0,0,0,0,0,0
+Macedonia,MK,Capacity,0,0,0,0,0,0,0,0,0
+Slovenia,SI,Capability,0,0,0,0,0,0,0,0,0
+Slovenia,SI,Capacity,0,0,0,0,0,0,0,0,0
+Montenegro,ME,Capability,0,0,0,0,0,0,0,0,0
+Montenegro,ME,Capacity,0,0,0,0,0,0,0,0,0
+Cyprus,CY,Capability,0,0,0,0,0,0,0,0,0
+Cyprus,CY,Capacity,0,0,0,0,0,0,0,0,0
+Luxembourg,LU,Capability,0,0,0,0,0,0,0,0,0
+Luxembourg,LU,Capacity,0,0,0,0,0,0,0,0,0
+Faroe Is.,FO,Capability,0,0,0,0,0,0,0,0,0
+Faroe Is.,FO,Capacity,0,0,0,0,0,0,0,0,0
+Andorra,AD,Capability,0,0,0,0,0,0,0,0,0
+Andorra,AD,Capacity,0,0,0,0,0,0,0,0,0
+Malta,MT,Capability,0,0,0,0,0,0,0,0,0
+Malta,MT,Capacity,0,0,0,0,0,0,0,0,0
+Liechtenstein,LI,Capability,0,0,0,0,0,0,0,0,0
+Liechtenstein,LI,Capacity,0,0,0,0,0,0,0,0,0
+Guernsey,GG,Capability,0,0,0,0,0,0,0,0,0
+Guernsey,GG,Capacity,0,0,0,0,0,0,0,0,0
+San Marino,SM,Capability,0,0,0,0,0,0,0,0,0
+San Marino,SM,Capacity,0,0,0,0,0,0,0,0,0
+Gibraltar,GI,Capability,0,0,0,0,0,0,0,0,0
+Gibraltar,GI,Capacity,0,0,0,0,0,0,0,0,0
+Monaco,MC,Capability,0,0,0,0,0,0,0,0,0
+Monaco,MC,Capacity,0,0,0,0,0,0,0,0,0
+Vatican City,VA,Capability,0,0,0,0,0,0,0,0,0
+Vatican City,VA,Capacity,0,0,0,0,0,0,0,0,0

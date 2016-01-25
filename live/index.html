@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://edsa-project.eu/edsa-data/themes/edsa/css/columnal.css" type="text/css" />
+    <link rel="stylesheet" href="http://edsa-project.eu/edsa-data/themes/edsa/css/custom.css" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css'">
+      
+      
+    <!-- override defaults to bring back to EDSA L&F - pages created outside wordpress -->
+    <style type="text/css">
+      
+      body {
+        background: none !important;
+      }
+      .dashboard {
+        background: none !important;
+      }
+      table td {
+        border: none !important;
+      }
+    </style>
+
+    <title>EDSA Demand Analysis Dashboard</title>
+
+  </head>
+
+  <body>
+
+
+    <p>Each view provides a different perspective on a dataset containing over 12,500 job postings in
+      Europe on Data Science, from 13 Jul to 10 Nov 2015, highlighting skills required of each role.</p>
+
+    <p>&nbsp;<br /></p>
+    <div>
+      <table width="90%">
+        <tr>
+          <td valign="bottom" align="center">
+            <h2 class="entry-title"><a href="map/" style="text-decoration: none;">Map View</a></h2>
+            <p>Browse job postings for Data Science and skill requirements across the EU</p>
+          </td>
+          <td><img src="../images/blank_space.png" width=40px></td>
+          <td><img src="../images/blank_space.png" width=40px></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td rowspan="2" valign="top" align="center"><a href="map/"><img src="../images/map_view.png" alt="Geographical distribution of job postings across the EU in the 'Map View" height=400px></a></td>
+          <td colspan="2"></td>
+          <td valign="bottom" align="center">
+            <h2 class="entry-title"><a href="ui/word_cloud.php" style="text-decoration: none;">Word Cloud</a></h2>
+            <p>Browse relative frequency of mention of data science skills in job postings</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+          <td align="center"><a href="ui/word_cloud.php"><img src="../images/word_cloud.png" alt="'Word Cloud' showing relative frequency of skill mentions" height=350px></a></td>
+        </tr>
+          <td colspan="4"><img src="../images/blank_space.png" height=15px></td>
+        <tr>
+        </tr>
+        <tr>
+          <td valign="middle" align="center">
+            <h2 class="entry-title"><a href="ui/parallel_coordinates.php" style="text-decoration: none;">Skill Set Viewer</a></h2>
+            <p>Determine co-occurence of data science skills in job postings</p>
+          </td>
+          <td colspan="3"><a href="ui/parallel_coordinates.php"><img src="../images/parallel_coords_with_skill_selector.png" alt="'Skill Set Viewer' using parallel coordinates" height=400px></a></td>
+        </tr>
+      </table>
+    </div>
+
+  </body>
+</html>

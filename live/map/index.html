@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+
+
+    <meta charset="UTF-8">
+
+    <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+
+    <!-- This is the version previous to organize files 1/10/2015  -->
+
+    <title>European Data Science Academy (EDSA) &ndash; Demand Analysis</title>
+
+    <link href='stylesheets/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" type="text/css" href="../common/stylefiles/dashboard.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+
+
+    <style type="text/css">
+
+      body {
+
+        //background-color:whitelight
+
+      }
+
+         /*<link href='stylesheets/dc.css' rel='stylesheet' type='text/css'> */
+
+          <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+
+
+
+      path {
+
+      fill: #ccc;
+
+      stroke: #fff;
+
+      stroke-width: .9px;
+
+      }
+
+      path:hover {
+
+      fill: #3182bd;
+
+      }
+
+      /*highlight selected country*/
+
+      g.selected path {
+
+      stroke: #801919;
+
+      stroke-width: 2px;
+
+      fill: #12A5F4;
+
+      /*            position: absolute;
+
+      top: 50%;
+
+      left: 50%;
+
+      transform: translate(-50%, -50%);*/
+
+      }
+
+      /*obfuscate countries not selected*/
+
+      g.deselected path {
+
+      fill: gray;
+
+      }
+
+    </style>
+
+
+
+  </head>
+
+
+
+  <body>
+
+
+
+    <script src="../common/libs/js/ext/d3.v3.min.js" type="text/javascript"></script>
+
+    <script src="../common/libs/js/ext/crossfilter.js" type="text/javascript"></script>
+
+    <script src="js/dc.js" type="text/javascript"></script>
+
+    <!--<script src='js/bootstrap.min.js' type='text/javascript'></script>-->
+
+
+
+    <p id="output"></p>
+
+
+
+    <div id="legend"></div>
+
+    <div id="dashboard">
+
+      <table class="table">
+
+<!--
+
+        <th class="edsa_banner" colspan=3 style="text-align: left; padding: 15px;">
+
+          <table>
+
+            <tr>
+
+              <td><img src="img/edsa-logo.png" style="height:40px !important;" /></td>
+
+              <td style="padding-left:20px; font-size:225%; vertical-align:middle;"><div>EDSA demand analysis dashboard</div></td>
+
+            </tr>
+
+          </table>
+
+        </th>
+
+ -->
+
+        <tr>
+
+          <td width="200">
+
+            <!--<div id="locationSelectorPanel" class=""></div>-->
+
+            <h4>Filter by Location</h4>
+
+            <div class='row-graph selectorPanel' id='dc-row-graph' style='width:265px; text-shadow:none; color:black'><!--class='row-graph span8: don't get this - span8 only sets width but also messes up height regardless, row-graph doesn't seem to be defined anywhere... -->
+
+              <a class="reset" href="javascript:locationRowChart.filterAll();dc.redrawAll();" style="display: none;">Reset</a>
+
+
+
+              <!--This is the reset class -->
+
+              <span class="reset" style="display: none;"> | Current filter: <span class="filter"></span></span>
+
+
+
+              <div class="clearfix"></div>
+
+            </div>
+
+          </td>
+
+          <td width="200">
+
+            <!--<div id="sSkillSelectorPanel" class="selectorPanel"></div>-->
+
+            <h4>Filter by Skill</h4>
+
+            <div class='row-graph selectorPanel' id='dc-row-graph2' style='width:265px; text-shadow:none; color:black'>
+
+               <a class="reset" href="javascript:nameSkillsRowChart.filterAll();dc.redrawAll();" style="display: none;">Reset</a>
+
+
+
+              <!--This is the reset class -->
+
+              <span class="reset" style="display: none;"> | Current filter: <span class="filter"></span></span>
+
+
+
+               <div class="clearfix"></div>
+
+            </div>
+
+          </td>
+
+          <td ><!-- width="80%" -->
+
+            <!--<div id="plot" class="plot"></div>-->
+
+            <!--<div class='row-fluid'>-->
+
+            <table width="60%">
+
+              <tr>
+
+                <td valign="middle"><h4>Select a Country </h4></td>
+
+                <td valign="bottom" style="text-align:center;">
+
+                  <div id="jobCount1">
+
+                    <!-- h4>Job count</h4 --><span class="number-display"></span> <!-- Number of Jobs .-->
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </table>
+
+
+          <div class='remaining-graphs span4'>
+              <div class="plot" id="us-chart" style='border-radius:5px; border-style: solid; border-color:maroon; border-width: 1px; width:600px'>
+
+                <a class="reset" href="javascript:usChart.filterAll();dc.redrawAll();" style="display: none;">&nbsp;&nbsp;&nbsp;Reset</a>
+
+
+
+                <!--This is the reset class of the Map -->
+
+                <span class="reset" style="display: none;"> | Current filter: <span class="filter"></span></span>
+
+
+
+                <div class="clearfix"></div>
+            </div>
+
+                <div class="plot" id="us-chart" style='border-radius:5px; border-style: solid; border-color:maroon; border-width: 1px; width:600px'>
+
+
+                 <table class="country-range" align="center">
+            <tr>
+               <h5>Range of Jobs </h5><td style="text-align:center;color:#ffffff;background-color:#8c857d">0-24</td>
+              <td style="text-align:center;color:#ffffff;background-color:#d982ab">25-47</td>
+              <td style="text-align:center;color:#ffffff;background-color:#d9525e">48-89</td>
+              <!--<td style="text-align:center;color:#ffffff;background-color:#a63f52">NO</td> -->
+              <td style="text-align:center;color:#ffffff;background-color:#8c6976">90-156</td>
+              <td style="text-align:center;color:#ffffff;background-color:#55b1b1">157-209</td>
+               <td style="text-align:center;color:#ffffff;background-color:#637e9e">210-2310</td>
+            </tr>
+
+          </table>
+
+
+
+              </div>
+
+
+
+
+
+          </div>
+
+          </td>
+
+        </tr><tr>
+
+          <td colspan="3">
+
+            <!--<div class='row-fluid'>-->
+
+                <!--<table width="50%" border="0">-->
+
+                  <!--<tr>-->
+
+                    <!--<td valign="middle"><h4>Detail for Selection</h4></td>-->
+
+                    <!--<td valign="middle" style="text-align:left;">-->
+
+                          <div id="jobCount2"><span class="number-display"></span><br/></div>
+
+                    <!--</td>-->
+
+                  <!--</tr>-->
+
+                <!--</table>-->
+
+                <div class=' table-graph selectorPanel' style='width:1000px; height:350px;'><!-- span12 -->
+
+                    <table class='table-hover dc-data-table' id='dc-table-graph' style='color:#a6c1cb; font-weight:medium;'><!-- table -->
+
+                        <thead>
+
+                            <tr class='header'>
+
+                                <th>Country</th>
+
+                                <th>Location</th>
+
+                                <th>Skills</th>
+
+                                <th>Jobs</th>
+
+                                <th>Employer</th>
+
+                              <!--  <th>Link</th> -->
+
+                            </tr>
+
+                        </thead>
+
+                    </table>
+
+                </div>
+
+            <!--</div>-->
+
+          </td>
+
+      </tr>
+
+      </table>
+
+    </div>
+
+
+
+
+
+  <script type="text/javascript">
+
+      var numberFormat = d3.format();
+
+      var usChart = dc.geoChoroplethChart("#us-chart");
+
+     // create a number display under #chart-container1 element using the default global chart group
+
+      var display1 = dc.numberDisplay("#jobCount1");
+
+      var display2 = dc.numberDisplay("#jobCount2");
+
+      var locationRowChart = dc.rowChart("#dc-row-graph");
+
+      var nameSkillsRowChart = dc.rowChart("#dc-row-graph2");
+
+      var dataTable = dc.dataTable("#dc-table-graph");
+
+      var chartheight = 900;
+
+      var gap = 5;
+
+      var count = 20;
+
+      var spaceForScales = 70;
+
+
+      //Load data from csv file
+
+      //d3.csv("data/datasciencejobs.csv", function (csv) {
+      d3.csv("../../data/job_postings/JobPosts_15_11_2015_12632.csv", function (csv) {
+
+          //Run data through crossfilter
+
+          var data = crossfilter(csv);
+
+          //Dimmension by Country
+
+          var countries = data.dimension(function (d) {
+
+              return d["Country"];
+
+          });
+
+          //It display total number Jobs
+
+          var numberJobs = data.dimension(function (d) {
+
+              return d["Jobs"];
+
+          });
+
+          //It groups and sum the variables Country  and Jobs
+
+          var countriesJobsdSum = countries.group().reduceSum(function (d) {
+
+              return d["Jobs"];
+
+          });
+
+          //It creates the Location dimension
+
+        var location = data.dimension(function (d) {
+
+            return d["Location"]; //Country
+
+        });
+
+        var locationJobsdSum = location.group().reduceSum(function (d) {
+
+            return d["Jobs"];
+
+        });
+
+        var filtered_group = remove_empty_bins(locationJobsdSum);
+
+            console.log(filtered_group.all())
+
+        function remove_empty_bins(source_group) {
+
+                return {
+
+                    all:function () {
+
+                        return source_group.all().filter(function(d) {
+
+                            return d.value != 0;
+
+                        });
+
+                    }
+
+                };
+
+            }
+
+        //var locationValueGroup = location.group();
+
+        //Location Row Chart locationCountry = countryDimension_NO
+
+        var locationCountry = data.dimension(function (d) {
+
+            return d["Location"];
+
+        });
+
+        var locationValueGroup = locationCountry.group();
+
+        //Dimension by Skills2 (NameSkills Row Chart)
+
+        var nameskills = data.dimension(function (d) {
+
+            return d["Skills11"];
+
+        });
+
+        var nameskillsValueGroup = nameskills.group();
+
+        //Location Row Chart  and  Pie Chart (Location Row Chart)
+
+        var countryDimension = data.dimension(function (d) {
+
+            return d["Location"]; //Country
+
+        });
+
+        var countryValueGroup = countryDimension.group();
+
+
+
+        //Total Jobs Dimension
+
+         var countriesJobsdSum4 = numberJobs.group().reduceSum(function (d) {
+
+                        return d["Jobs"];
+
+                    });
+
+
+
+        //This is a second dimmension using DB_IndustryGroup_NO
+
+        var countriesT = data.dimension(function (d) {
+
+            return d["Country"];
+
+        });
+
+
+
+        // For datatable
+
+        var skillsTableDimension = data.dimension(function (d) { return d.Skills; });
+
+
+
+
+
+              //This is the data for the Map
+
+          d3.json("../../data/europe.json", function (error, eu) {
+
+              //console.log('map', eu)
+
+
+
+              usChart.width(599)
+
+                    .height(500)
+
+                    .dimension(countries)
+
+                    .group(countriesJobsdSum)
+
+                    .projection(d3.geo.mercator()
+
+                        .scale((1200 + 1) / 2 )
+
+                        .translate([660 / 4, 3360 / 4])
+
+                        .precision(.1)
+
+                        )
+
+                    //EDSA colors
+
+                    .colors(d3.scale.quantize().range(
+
+                        ["#8c857d", "#d982ab", "#d9525e", "#a63f52", "#8c6976", "#55b1b1", "#637e9e"])
+
+                    )
+
+                    .colorDomain([0, 200])
+
+                    .colorCalculator(function (d) { return d ? usChart.colors()(d) : '#ccc'; })
+
+                    .overlayGeoJson(eu.features, "countries", function (d) {
+
+                        return d.properties.name;
+
+                        //return d.properties.Country;
+
+                    })
+
+                    .transitionDuration(0)
+
+                    .title(function (d) {
+
+                        return "Country: " + d.key + "\nNumber of Jobs: " + numberFormat(d.value ? d.value : 0) ;
+
+                    });
+
+                  //Total Jobs
+
+                  display1
+
+                      .formatNumber(d3.format())
+
+                      .group(countriesJobsdSum4)
+
+                      .html({
+
+                      //  one:"<span style=\" font-size: 26px;\">%number</span>
+
+                        some:"<span style=\"color:maroon; font-size: 24px;\">Job count: " +
+
+                                "<span style=\"font-weight:bold; color:#21637d;\">%number</span>" +
+
+                              "</span> ",
+
+                       // none:"<span style=\"color:steelblue; font-size: 26px;\">No</span> ????2"
+
+                      })
+
+                  display2
+
+                      .formatNumber(d3.format())
+
+                      .group(countriesJobsdSum4)
+
+                      .html({
+
+                        some:"<br /><span style=\"color:maroon; font-size: 24px; font-weight:medium;\">Detail for Selection (job count: " +
+
+                                "<span style=\"font-weight:bold; color:#21637d;\">%number</span>)" +
+
+                              "</span>&nbsp;<br /> ",
+
+                      })
+
+
+
+              locationRowChart
+
+                    .width(321)   //820 //520
+
+                    .height(10780) //1380 //590
+
+                    .dimension(location)
+
+                    .group(filtered_group)
+
+                    .renderLabel(true)
+
+                    .fixedBarHeight((chartheight - (count + 1) * gap - spaceForScales) / count)
+
+                    .elasticX(true)
+
+                    .ordering(function (d) {
+
+                        return -d.value
+
+                    })
+
+                    .colors(d3.scale.category20())
+
+                    .xAxis().ticks(0)
+
+
+
+              nameSkillsRowChart
+
+                      .width(265)   //820 //520
+
+                      .height(4000) //10600) //1380 //590
+
+                      .transitionDuration(1500)
+
+                      .dimension(nameskills)
+
+                      .group(nameskillsValueGroup)
+
+                      .renderLabel(true)
+
+                      //.elasticX(true)
+
+                      .ordering(function (d) {
+
+                          return -d.value
+
+                      })
+                       .colors(d3.scale.category20())
+
+                    .xAxis().ticks(0)
+
+              //Full Table
+
+              dataTable.width(1200)
+
+                       .height(450)
+
+                       .dimension(skillsTableDimension)
+
+                       .group(function(d) { return "";//List of all Locations"
+
+                         })
+
+                       .size(41)
+
+                       .columns([
+
+                       function(d) { return d.Country; },
+
+                       function(d) { return d.Location; },
+
+                       function(d) { return d.Skills11; },
+
+                       function(d) { return d.Jobs; },
+
+                       function(d) { return d.Employer; },
+
+                      // function(d) { return '<a href=\"https://gb.linkedin.com/' +"\" target=\"_blank\">Website</a>"}
+
+                       ])
+
+                      .sortBy(function(d){ return d.Country; })
+
+                        // (optional) sort order, :default ascending
+
+                      .order(d3.ascending);
+
+                      dc.renderAll();
+
+                  }); // END d3.json("data/europe5.json",
+
+      }); //END d3.csv("data/datasciencejobs4.csv"
+
+  </script>
+
+
+
+  <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+
+      _gaq.push(['_setAccount', 'UA-33628816-1']);
+
+      _gaq.push(['_trackPageview']);
+
+      (function () {
+
+          var ga = document.createElement('script');
+
+          ga.type = 'text/javascript';
+
+          ga.async = true;
+
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+          var s = document.getElementsByTagName('script')[0];
+
+          s.parentNode.insertBefore(ga, s);
+
+      })();
+
+  </script>
+
+
+  </body>
+
+</html>
+

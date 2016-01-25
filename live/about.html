@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8">
+
+      <script type="text/javascript">// <![CDATA[
+        function showHideImage(imageUrl) {
+          var image = document.getElementById(imageUrl);
+          if(!image)
+            return true;
+          if(image.style.display=="none")
+            image.style.display="block";
+          else
+            image.style.display="none";
+
+          return true;
+        }
+      // ]]></script>
+
+      <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="http://edsa-project.eu/edsa-data/themes/edsa/css/columnal.css" type="text/css" media="screen" />
+      <link rel="stylesheet" href="http://edsa-project.eu/edsa-data/themes/edsa/css/custom.css" type="text/css" media="screen" />
+      <link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css'">
+
+        <!-- override defaults to bring back to EDSA L&F - pages created outside wordpress -->
+        <style type="text/css">
+
+        body {
+          background: none !important;
+          overflow-y: auto !important;
+        }
+        .dashboard {
+          background: none !important;
+        }
+        table td {
+          border: none !important;
+        }
+        </style>
+
+
+      <title>EDSA Demand Analysis Dashboard | About</title>
+
+
+      <!-- link rel="stylesheet" href="common_libs/stylefiles/dashboard.css" type="text/css" / -->
+  </head>
+
+  <body>
+
+      <a name="top" id="top"></a>
+
+      <p>Welcome to the <em>EDSA Data Science Skill Demand Dashboard</em> &ndash; examining demand for Data Scientists and the specific skills required in different geographical regions and industry sectors across the EU. Each view provides a different perspective on a common data set.</p>
+
+
+      <h2 class="entry-title">Map View</h2>
+      <p>The <a href="map/">Map View</a> provides an overview, displaying job data collected for a specified date range. Job distribution varies between countries &ndash;  the non-linear legend below the map interprets colour coding based on number of jobs located in each country.
+      </p>
+
+      <h3>Co-ordinated data filters:</h3>
+      <p>Click to select/deselect country / city / skill &ndash; applying any filter updates all others.
+      </p>
+      <ul>
+        <li>Filter by <em>country</em> to show only jobs available in that country.</li>
+        <li>Select one or more <em>skills</em> (including tool expertise) to show jobs requiring any of the selected skills.</li>
+        <li>Select one or more <em>cities</em> to show jobs advertised in any of the cities selected.</li>
+      </ul>
+
+      <p>E.g., search for all jobs in <em>London</em> or <em>Paris</em> requiring <em>Java</em>. The data table below the map shows a summary of each job that matches the (joint) filter.
+      <p>
+      <p><a style="margin-left: 24px;" onmousedown="return showHideImage('map_view_filter')" href="javascript:;">Show/hide snapshot of filter</a></p>
+      <div id="map_view_filter" style="display: none; margin-left: 36px;">
+        <img src="../images/map_view_filter_london_or_paris_and_java.png" alt="" height=400px>
+      </div>
+      <p><a href="#top">back to top</a> </p>
+      <p><img src="../images/blank_space.png" width=15></p>
+
+
+      <h2 class="entry-title">Skill Sets View</h2>
+      <p>The <a href="ui/parallel_coordinates.php">Skill Sets Viewer</a> makes use of parallel coordinates to provide an overview of co-occurence of skills in job postings. This coupled skillset selector on the left lists 46 skills grouped into 7 skillsets, identified as core to Data Science in the initial stages of the project, through interviews with industry experts.<br />
+      Skillset grouping is reflected in the colour-coded axis labels in the parallel coordinates view. Skills not mentioned in at least one posting are greyed out. Each polyline represents a single job posting, intersecting along each <em>skill axis</em> to show the frequency of mention for that posting. Two trend lines for <em>maximum</em> and <em>median</em> frequency across all postings are shown using thick, broken lines, colour-coded rosy pink and green respectively.
+      </p>
+
+      <h3>Co-ordinated data filters:</h3>
+      <ul>
+        <li>Select/deselect a skill or an entire skillset in the list to show/hide corresponding axes.</li>
+        <li>Double-click on an axis label to hide the skill.</li>
+        <li>Click and drag along an axis line to filter to the range desired; drag or resize the filter range; double-click to clear the axis filter. An <em>AND</em> filter (skill co-occurence) is applied to visual filters &ndash; only postings containing at least skill counts within all ranges are shown.</li>
+      </ul>
+
+      <p>E.g., search for all jobs requiring <em>Python</em> and <em>Statistics</em> posted in <em>Sep 2015</em>. Mouse over or double-click on a posting (polyline) in the result set to reveal selected attributes and the frequency of mention of skills.
+      <p>
+      <p><a style="margin-left: 24px;" onmousedown="return showHideImage('skill_set_viewer_filter')" href="javascript:;">Show/hide snapshot of filter</a></p>
+      <div id="skill_set_viewer_filter" style="display: none; margin-left: 36px;">
+        <img src="../images/parallel_coords_filter_python_statistics_sep2015.png" alt="" height=400px>
+      </div>
+      <p><a href="#top">back to top</a> </p>
+      <p><img src="../images/blank_space.png" width=15></p>
+
+
+      <h2 class="entry-title">Word Cloud View</h2>
+      The <a href="ui/word_cloud.php">Cloud</a> view maps (relative) frequency of mention of the 46 Data Science skills identified to size. Colour coding maps is as for the <a href="ui/parallel_coordinates.php">parallel coordinates</a>. Because of the large variation in counts across skills this view uses a natural log (non-linear) scale.
+
+      <p>E.g., <em>Statistics</em> occurs 1754 times in 1278 postings, in a dataset comprising over 12,600 job postings across Europe between 13 Jul and 10 Nov 2015, while <em>Big Data</em> is mentioned 11,687 in 6,616 postings, and <em>Enterprise Process</em>, found in the skillset &quot;Domain Expertise&quot;, (see cloud inset) is mentioned 4 times in 3 postings.
+      <p>
+      <p><a style="margin-left: 24px;" onmousedown="return showHideImage('word_cloud_view_filter')" href="javascript:;">Show/hide snapshot of filter</a></p>
+      <div id="word_cloud_view_filter" style="display: none; margin-left: 36px;">
+        <img src="../images/word_cloud_filter_statistics.png" alt="" height=300px>
+      </div>
+      <p><a href="#top">back to top</a> </p>
+      <p><img src="../images/blank_space.png" width=15></p>
+
+
+      <h2 class="entry-title">Job Demand Data</h2>
+      <p>Job postings in Data Science are being mined from online portals such as <a href="http://linkedin.com" target="_blank">LinkedIn</a>, <a href="http://monster.com" target="_blank">Monster</a>, <a href="http://www.indeed.com" target="_blank">Indeed</a> and <a href="http://careers.stackoverflow.com" target="_blank">Stack Overflow</a>. Variants of the term &quot;Data Science&quot; are used as a filter for the information extraction process, for all jobs found in Europe. The aim is to collect a dataset that allows us to analyse historical and current trends in Data Science demand, and therefore, predict the future Data Science landscape across the European Union (EU).
+      </p>
+
+      <h3 class="entry-title">Data Acquisition &amp; Pre-processing</h3>
+      <p>As part of the EDSA project's' commitment to release our findings using open standards, we aim ultimately to make our data available as Linked Data. We are currently building an RDF store to capture job postings and other related data, maintaining provenance in each instance. The structure of each post is being mapped to the EDSA <tt>Job Posting</tt> concept, which extends <a href="https://schema.org/JobPosting" target="_blank"><tt>schema.org.JobPosting</tt></a>, listing attributes including the EDSA <tt>Skill</tt> concept, which is based on the <a href="https://ec.europa.eu/esco/lod/model#Skill" target="_blank">ESCO Skills Pillar</a>. Other key information extracted includes <tt>hiring organisation</tt>, <tt>geographical location</tt> and <tt>salary</tt>.
+      </p>
+
+      <p><a href="#top">back to top</a> </p>
+      <p><img src="../images/blank_space.png" width=15></p>
+
+      <h2>Recommended Browsers</h2>
+      <ul>
+        <li>Google Chrome &ndash; latest version</li>
+        <li>Safari &ndash; minimum v9 (requires update to use full JavaScript String libraries)</li>
+        <li>Mozilla Firefox &ndash; latest version</li>
+      </ul>
+
+      <p><a href="#top">back to top</a> </p>
+      <p><img src="../images/blank_space.png" width=25></p>
+
+
+      <h2 class="entry-title">Contribute to the EDSA Skills Survey</h2>
+      <p>Do you have data about data science jobs in Europe? Are you a job site, hosting such posts? Are you a practising Data Scientist or a policy or decision maker in an institution requiring Data Scientists? If so, we need your help!
+      </p>
+
+      <p>The more data we can access, the deeper the insight we can obtain and the more useful our data collection and processing will be for our own analysis and for yours. We are currently carrying out analysis from different perspectives, looking at, among others, skill distribution, job distribution, the impact of location, language and industrial sector and whether salary projections match practise, with  a focus on the EU.
+      </p>
+
+     <p>The ultimate aim of EDSA is to design and build courses and point to existing courses that will provide training to fill skill gaps we identify as part of our demand analysis. Do you run Data Science training courses within the EU? What skills and tools do you focus on? How many trainees do you average per year? Where do your graduates go? This second stage in our information acquisition exercise will help us to paint a more complete picture of the Data Science landscape, allowing us to map capacity for Data Scientists to capability, and help to provide effective, up-to-date, more general and location- and industry-specific training resources for practising and new Data Scientists.
+      </p>
+
+      <p>To contribute your data or help us to extend and refine our initial set of Data Science skills please complete our <a href="http://edsa-project.eu/resources/survey">skills survey</a> or <a href="http://edsa-project.eu/contact">contact us</a>.
+      </p>
+
+      <h3 class="entry-title">Skills Survey Results</h3>
+      <p>The survey cross filter dashboard allows you to interactively browse the results from from the EDSA demand analysis &ndash; a combination of online survey and interviews responses.</p>
+
+      <p>The default view shows all data:
+        <ul>
+          <li>The <i>Map</i> view shows locations of the respondents.</li>
+          <li>The <i>Role</i> pie chart shows the primary role of the respondents, e.g., data scientist, manager, other.</li>
+          <li>The <i>Sector</i> bar chart shows the respondents' primary industry sector.</li>
+          <li>The <i>Which areas are essential?</i> chart shows the key areas of data science respondents considered as <i>essential</i>, <i>desirable</i> or <i>not required</i> for a data scientist to have.</li>
+          <li>The <i>Expertise in key areas</i> donut charts show the current level of expertise in 8 key data science areas that respondents were asked to rate.</li>
+          <li>The <i>Word Cloud</i> shows key tools, languages and techniques that have been rated as important to respondents.  Size maps to frequency of mention.</li>
+        </ul>
+      </p>
+      <p>The dashboard shows a live view of all submitted data. A filter however excludes inconsistent or incomplete results. Because this may be updated, data currently available may be excluded at a later time.
+      </p>
+
+      <p>All charts apart from the word cloud can be used to filter the data.<br />
+
+      E.g., to look at the data from <i>Managers</i> in the <i>UK</i>, select "Manager" in the <i>Role</i> pie chart, and then the UK in the <i>Map</i> view. This will apply this filter to the view. Deselect to restore to the default view or refresh the page.
+      </p>
+
+      <p><a href="#top">back to top</a> </p>
+
+  </body>
+</html>
